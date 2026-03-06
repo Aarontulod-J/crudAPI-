@@ -11,6 +11,7 @@ export interface UserAttributes {
     role: string;
     createdAt: Date;
     updatedAt: Date;
+    websiteUrl: string;
 }
 
 export interface UserCreationAttributes
@@ -29,6 +30,7 @@ export class User
     public role!: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
+    public websiteUrl!: string;
 }
 
 export default function (sequelize: Sequelize): typeof User {
@@ -73,6 +75,11 @@ export default function (sequelize: Sequelize): typeof User {
                 type: DataTypes.DATE,
                 allowNull: false,
                 defaultValue: DataTypes.NOW,
+            },
+            websiteUrl: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                defaultValue: 'https://example.com', 
             },
         },
         {
